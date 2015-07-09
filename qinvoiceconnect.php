@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Qinvoice Connect Add-On
 Plugin URI: http://www.q-invoice.com
 Description: Fully integrate Gravity Forms with Qinvoice for sending invoices
-Version: 2.0.1
+Version: 2.0.2
 Author: qinvoice
 Author URI: http://www.q-invoice.com
 Text Domain: gravityforms-qinvoice-connect
@@ -24,11 +24,15 @@ add_action( 'gform_paypal_fulfillment', array ('GF_QinvoiceConnect_Bootstrap', '
 
 class GF_QinvoiceConnect_Bootstrap {
 
+	public static $_plugin_basename;
+
 	public static function load(){
 
 		if ( ! method_exists( 'GFForms', 'include_feed_addon_framework' ) ) {
 			return;
 		}
+
+		self::$_plugin_basename = plugin_basename(__FILE__);
 
 		require_once( 'class-gf-qinvoice-connect.php' );
 

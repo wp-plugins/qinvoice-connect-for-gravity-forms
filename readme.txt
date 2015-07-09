@@ -4,7 +4,7 @@ Donate link: n/a
 Tags: billing, invoicing, gravity forms, estimates
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,9 +50,16 @@ info@q-invoice.sk
 
 == Screenshots ==
 
-
+1. screenshot-1.png
+2. screenshot-2.png
+3. screenshot-3.png
+4. screenshot-4.png
 
 == Changelog ==
+
+= 2.0.2 =
+* Added support link to plugin actions
+* Added screenshots for WP repository
 
 = 2.0.1 =
 * Added tags

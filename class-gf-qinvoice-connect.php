@@ -35,7 +35,6 @@ class GFQinvoiceConnect extends GFFeedAddOn {
 
 	public function init() {
 		parent::init();
-		
 	}
 
 	public function init_ajax() {
@@ -44,9 +43,10 @@ class GFQinvoiceConnect extends GFFeedAddOn {
 
 	public function init_admin() {
 		add_action( 'admin_init', array( $this, 'insert_version_data' ) );
+		add_filter( 'plugin_row_meta', array( $this, 'add_support_links' ), 10, 2 );
 		parent::init_admin();
 	}
-	
+
 	function insert_version_data(){
 		$update_info = get_transient( 'gform_update_info' );
 		if( ! $update_info )
@@ -64,6 +64,22 @@ class GFQinvoiceConnect extends GFFeedAddOn {
 		set_transient( 'gform_update_info', $update_info, DAY_IN_SECONDS );
 	}
 
+	/**
+	 * Add various support links to plugin page
+	 * after meta (version, authors, site)
+	 */
+	public function add_support_links( $links, $file ) {
+		if ( !current_user_can( 'install_plugins' ) ) {
+			return $links;
+		}
+	
+		if ( $file == GF_QinvoiceConnect_Bootstrap::$_plugin_basename) {
+			$links[] = '<a href="mailto:support@q-invoice.com" target="_blank" title="' . __( 'Get support', 'woocommerce-qinvoice-connect-pro' ) . '">' . __( 'Get support', 'gravityforms-qinvoice-connect' ) . '</a>';
+			$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/qinvoice-connect-for-gravity-forms?filter=5#postform" target="_blank" title="' . __( 'Leave a review', 'gravityforms-qinvoice-connect' ) . '">' . __( 'Leave a review', 'woocommerce-qinvoice-connect-pro' ) . '</a>';
+		}
+
+		return $links;
+	}
 
 	function get_action_links() {
 		$feed_id  = '_id_';
