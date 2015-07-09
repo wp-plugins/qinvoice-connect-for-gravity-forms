@@ -1,4 +1,4 @@
-=== Qinvoice Connect for Woocommerce ===
+=== Qinvoice Connect for Gravity Forms ===
 Contributors: q-invoice
 Donate link: n/a
 Tags: billing, invoicing, gravity forms, estimates
